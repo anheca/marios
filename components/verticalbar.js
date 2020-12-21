@@ -6,7 +6,7 @@ const ps = new ProductService()
 class VerticalNav {
 
 
-  verticalNav ($verticalNav, valueTxt = 'Error', products) {
+  verticalNav($verticalNav, valueTxt = 'Error', products) {
     valueTxt = valueTxt.split('-')
     let txt = valueTxt[0].toLocaleUpperCase()
 
@@ -29,8 +29,8 @@ class VerticalNav {
   }
 
   // Añade los li a las ul  pt-1 //
-  typesOfProducts ({ container: containerList, types }) {
-    debugger
+  typesOfProducts({ container: containerList, types }) {
+    // debugger
     containerList.innerHTML = ''
     for (let i = 0; i < types.length; i++) {
       const type = types[i]
@@ -47,7 +47,7 @@ class VerticalNav {
   }
 
 
-  changeVerticalNavContent (props) {
+  changeVerticalNavContent(props) {
     props.container.innerHTML = `
     <div class="mb-3 mt-3">
         <p class="font-weight-light" id="VN-title"><a href="#"><span><</span> ${props.gender.toLocaleUpperCase()}</a></p>

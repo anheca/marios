@@ -2,7 +2,7 @@
 import { formatoMexico, trunc } from '../modules/helpers.js'
 
 class UI {
-  genderCards (genders, section) {
+  genderCards(genders, section) {
     for (let i = 0; i < genders.length; i++) {
       const gender = genders[i]
       let div = document.createElement('div')
@@ -14,12 +14,12 @@ class UI {
 
   }
 
-  removeContainerContent (section) {
+  removeContainerContent(section) {
     section.innerHTML = ``
     section.classList.remove('d-flex')
   }
 
-  breadcrumb (arr) {
+  breadcrumb(arr) {
     const className = 'breadcrumb'
     const elementId = 'breadcrumb-container'
     const liClassName = 'breadcrumb-item'
@@ -41,7 +41,7 @@ class UI {
     breadcrumbId.appendChild(ol)
   }
 
-  search () {
+  search() {
     let searchId = document.getElementById('search-container')
     searchId.innerHTML = `
                 <form id="Form" class="form-group display-flex" draggable="true">
@@ -52,7 +52,7 @@ class UI {
     filterInput.addEventListener('keyup', this.filterProducts);
   }
 
-  listCards (products) {
+  listCards(products) {
 
     const list = document.getElementById('cards-container')
     list.innerHTML = ''
@@ -74,7 +74,7 @@ class UI {
   }
 
   // Filtra los productos //
-  filterProducts () {
+  filterProducts() {
     let filterValue = document.getElementById('filter').value.toUpperCase().trim();
 
     let cardsContainer = document.getElementById('cards-container');
@@ -92,7 +92,7 @@ class UI {
 
 
   // agrega contenedor de cartas
-  addMainContainer (contenedor) {
+  addMainContainer(contenedor) {
 
     let div = document.createElement('div')
     div.className = 'container'
@@ -112,21 +112,18 @@ class UI {
     contenedor.appendChild(div)
   }
 
-  addVerticalContainer ({ container, titleId, productsId, texto }) {
+  addVerticalContainer({ container, titleId, productsId, gender }) {
 
     container.innerHTML = `
         <div class="mb-3 mt-3">
             <p class="font-weight-light" id="VN-title-inicio"><a href="#"><span><</span> INICIO</a></p>
         </div>
         <div class="mb-3 caja">
-            <h5 class="mb-2" id="${titleId}">${texto}</h5>
+            <h5 class="mb-2" id="${titleId}">${gender}</h5>
             <ul class="list-group" id="${productsId}"></ul>
         </div>
         `
   }
-
-
-
 }
 
 export default UI
