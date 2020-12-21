@@ -3,11 +3,11 @@ import { formatoMexico, trunc } from '../modules/helpers.js'
 
 class UI {
   genderCards(genders, section) {
-    section.style.display = 'block'
+    section.style.display = ''
     for (let i = 0; i < genders.length; i++) {
       const gender = genders[i]
       let div = document.createElement('div')
-      div.className = 'gender-card m-5'
+      div.className = 'gender-card'
       div.id = `${gender.toLowerCase()}-container`
       div.innerHTML = `${gender}`
       section.appendChild(div)
@@ -15,9 +15,24 @@ class UI {
 
   }
 
-  removeContainerContent(section) {
-    section.innerHTML = ``
-    section.classList.remove('d-flex')
+  displayNone(section) {
+    const parentSection = section.parentNode
+    let children = parentSection.children
+    for (let i = 0; i < children.length; i++) {
+      if (children[i].id != section.id) {
+        children[i].style.display = 'none'
+        children[i].innerHTML = ''
+      } section.style.display = ''
+    }
+  }
+
+  changeRoot(customVar, value) {
+    let root = document.querySelector(':root')
+    root.style.setProperty(customVar, value)
+  }
+
+  changeStyle(section, clase) {
+    section.classList.add(clase)
   }
 
   breadcrumb(arr) {
@@ -45,8 +60,8 @@ class UI {
   search() {
     let searchId = document.getElementById('nav-form')
     searchId.innerHTML = `
-                    <input type="text" class="col-sm-12 form-control mr-2" id="filter" placeholder="Search Products">
-        `
+      <input type="text" class="form-control" id="filter" placeholder="Search Products">
+    `
     let filterInput = document.getElementById('filter');
     filterInput.addEventListener('keyup', this.filterProducts);
   }
@@ -59,15 +74,14 @@ class UI {
       const product = products[i]
       const price = `$ ${formatoMexico(trunc(product.price, 2))}`
       let div = document.createElement('div')
-      div.className = 'col-sm-6 col-md-4 col-lg-3 mb-3'
+      div.className = 'card'
       div.innerHTML = `
-            <div class="card">
-                <img src=${product.imageURL} class="card-img-top wh-d" alt="...">
-                <div class="card-body">
-                    <span>${product.name.toLowerCase()}</span>
-                    <p><strong>${price}</strong></p>
-                </div>
-            </div>`
+        <img src=${product.imageURL} class="card-img-top wh-d" alt="...">
+        <div class="card-body">
+            <span>${product.name.toLowerCase()}</span>
+            <p><strong>${price}</strong></p>
+        </div>
+      `
       list.appendChild(div);
     }
   }
@@ -89,29 +103,15 @@ class UI {
     }
   }
 
-
   // agrega contenedor de cartas
-  addMainContainer(contenedor) {
-
-    let div = document.createElement('div')
-    div.className = 'container'
-    div.innerHTML = `
-        <div class="card card-body pl-0 pb-2 bor" id="nav-container">
-            <div class="row" id="row">
-                <nav class="col-lg-7 col-md-12 col-sm-4" id="breadcrumb-container" aria-label="breadcrumb"></nav>
-                <div class="col-lg-5 col-md-12 col-sm-8" id="search-container"></div>
-            </div>
-        </div>
-        <div class="row contenedor">
-            <div class="col-md-2 mb-3 card mr-3 bor" id="vertical-nav"></div>
-            <div class="col-md-10 row pr-0" id="cards-container"></div>
-        </div>
-        `
-    contenedor.appendChild(div)
+  addShopContainer(contenedor) {
+    contenedor.innerHTML = `
+      <div class="card bor" id="vertical-nav"></div>
+      <div class="row" id="cards-container"></div>
+    `
   }
 
   addVerticalContainer({ container, titleId, productsId, gender }) {
-
     container.innerHTML = `
         <div class="mb-3 mt-3">
             <p class="font-weight-light" id="VN-title-inicio"><a href="#"><span><</span> INICIO</a></p>
@@ -120,7 +120,7 @@ class UI {
             <h5 class="mb-2" id="${titleId}">${gender}</h5>
             <ul class="list-group" id="${productsId}"></ul>
         </div>
-        `
+     `
   }
 }
 

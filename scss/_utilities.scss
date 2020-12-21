@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans|Quicksand|Raleway|Roboto|Montserrat&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+p{
+  font-size: 1rem;
+}
+
+a{
+  text-decoration: none;
+}
+
+a:hover, a:active, a:visited{
+  text-decoration: none;
+  color: rgb(51, 51, 51);
+}
+.section{
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+}
+
+ul{
+  list-style: none;
+}
+
+input:focus{
+  outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  transition: background-color 5000s;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.card{
+  background-color: var(--card-color);
+  box-shadow: var(--default-shadow);
+  padding: 10px;
+
+  .form-group{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.d-flex{
+  display: flex;
+  flex-direction: row;
+}
+
+// Efects //
+.blur{
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+}
+
+.bor{
+  border: none;
+}
+
+// Margin & padding classes
+$spaceamounts: (5,4,3,2,1);
+
+@each $space in $spaceamounts {
+  .m-#{$space} {
+    margin: #{$space}rem;
+  }
+  .mt-#{$space} {
+    margin-top: #{$space}rem;
+  }
+  .mb-#{$space} {
+    margin-bottom: #{$space}rem;
+  }
+  .ml-#{$space} {
+    margin-left: #{$space}rem;
+  }
+  .mr-#{$space} {
+    margin-right: #{$space}rem;
+  }
+  .my-#{$space} {
+    margin: #{$space}rem 0;
+  }
+  .mx-#{$space} {
+    margin: 0 #{$space}rem;
+  }
+  .p-#{$space} {
+    padding: #{$space}rem;
+  }
+  .pt-#{$space} {
+    padding-top: #{$space}rem;
+  }
+  .pb-#{$space} {
+    padding-bottom: #{$space}rem;
+  }
+  .pl-#{$space} {
+    padding-left: #{$space}rem;
+  }
+  .pr-#{$space} {
+    padding-right: #{$space}rem;
+  }
+  .py-#{$space} {
+    padding: #{$space}rem 0;
+  }
+  .px-#{$space} {
+    padding: 0 #{$space}rem;
+  }
+}
+
+$spaceamounts: (0);
+
+@each $space in $spaceamounts {
+  .m-#{$space} {
+    margin: #{$space};
+  }
+  .p-#{$space} {
+    padding: #{$space};
+  }
+}

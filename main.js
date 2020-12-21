@@ -31,6 +31,7 @@ breadcrumb.add('inicio')
 // La pagina inicial cargada //
 function bodyLoaded() {
   ui.genderCards(generos, genderSection)
+  ui.search()
 }
 
 // Click a genero //
@@ -40,10 +41,11 @@ function genderClicked(e) {
   const gender = genderSplit[0]
 
   if (gender == 'hombre' || gender == 'mujer') {
-    ui.removeContainerContent(section)
+    ui.displayNone(shopSection)
+    ui.changeStyle(shopSection, 'mx-5')
+    ui.changeRoot('--section-medida', 'auto')
     updateBreadcrumb('add', gender)
-    ui.search()
-    ui.addMainContainer(section)
+    ui.addShopContainer(shopSection)
 
     const verticalNav = document.getElementById('vertical-nav')
     const propsVerticalNav = {
