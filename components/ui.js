@@ -3,6 +3,7 @@ import { formatoMexico, trunc } from '../modules/helpers.js'
 
 class UI {
   genderCards(genders, section) {
+    section.style.display = 'block'
     for (let i = 0; i < genders.length; i++) {
       const gender = genders[i]
       let div = document.createElement('div')
@@ -42,11 +43,9 @@ class UI {
   }
 
   search() {
-    let searchId = document.getElementById('search-container')
+    let searchId = document.getElementById('nav-form')
     searchId.innerHTML = `
-                <form id="Form" class="form-group display-flex" draggable="true">
                     <input type="text" class="col-sm-12 form-control mr-2" id="filter" placeholder="Search Products">
-                </form>
         `
     let filterInput = document.getElementById('filter');
     filterInput.addEventListener('keyup', this.filterProducts);

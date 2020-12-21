@@ -11,6 +11,8 @@ const breadcrumb = new Breadcrumb()
 
 
 const section = document.getElementById('main-section')
+const genderSection = document.getElementById('gender-section')
+const shopSection = document.getElementById('shop-section')
 let allProducts = ps.getActiveProducts()
 let productsGender = 'hola mundo';
 
@@ -28,7 +30,7 @@ breadcrumb.add('inicio')
 
 // La pagina inicial cargada //
 function bodyLoaded() {
-  ui.genderCards(generos, section)
+  ui.genderCards(generos, genderSection)
 }
 
 // Click a genero //
@@ -39,6 +41,8 @@ function genderClicked(e) {
 
   if (gender == 'hombre' || gender == 'mujer') {
     ui.removeContainerContent(section)
+    updateBreadcrumb('add', gender)
+    ui.search()
     ui.addMainContainer(section)
 
     const verticalNav = document.getElementById('vertical-nav')
@@ -49,8 +53,6 @@ function genderClicked(e) {
       gender: gender
     }
 
-    updateBreadcrumb('add', gender)
-    ui.search()
     ui.addVerticalContainer(propsVerticalNav)
 
     addMoreListener(propsVerticalNav)

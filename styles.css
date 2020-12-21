@@ -26,9 +26,14 @@ a:hover, a:active, a:visited{
 }
 
 /* CLASES */
+
+:root{
+  --navbar-medida: 3.7rem;
+}
+
 #nav-bar{
-  background-color: rgb(235, 83, 83);
-  box-shadow: 0px 2px 8px black;
+  background-color: #eb5353;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
   color: #fff;
@@ -47,12 +52,12 @@ a:hover, a:active, a:visited{
   font-size: 14px;
 }
 
-.section{
-  --var-medida: 2rem;
-  margin-top: var(--var-medida);
-  height: calc(100vh - var(--var-medida));
+#main-section{
+  margin-top: var(--navbar-medida);
+  height: calc(100vh - var(--navbar-medida));
   width: 100%;
   box-sizing: border-box;
+  display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid red;
@@ -62,6 +67,9 @@ a:hover, a:active, a:visited{
     display: flex;
     flex-direction: row;
 }
+
+
+
 
 .form-group{
     padding: 0;
@@ -76,8 +84,8 @@ a:hover, a:active, a:visited{
 .gender-card{
     width: 400px;
     height: 400px;
-    background-color: rgb(211, 31, 31);
-    box-shadow: 3px 3px 6px black, 0px 0px 2px black;
+    background-color: #eb5353;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.8);
     color: white;
     cursor: pointer;
     display: flex;
