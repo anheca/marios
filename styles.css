@@ -27,9 +27,35 @@ a:hover, a:active, a:visited{
 
 /* CLASES */
 #nav-bar{
-    background-color: rgb(175, 36, 66);
-    color: white;
-    box-shadow: 0px 3px 6px black;
+  background-color: rgb(235, 83, 83);
+  box-shadow: 0px 2px 8px black;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+.cart-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 40px;
+  font-size: 24px;
+  color: rgb(51, 51, 51);
+}
+
+#breadcrumb-container{
+  font-size: 14px;
+}
+
+.section{
+  --var-medida: 2rem;
+  margin-top: var(--var-medida);
+  height: calc(100vh - var(--var-medida));
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid red;
 }
 
 .display-flex{
@@ -139,14 +165,4 @@ p a span{
     color: rgb(212, 0, 0);
     background-color: transparent;
     border-color: transparent;
-}
-
-/* ESPECIALES */
-
-.divider{
-    border-top: 1px dotted rgb(187, 187, 187);
-    display: inline-block;
-    height: 1px;
-    width: calc(100% - 1em);
-    vertical-align: middle;
 }

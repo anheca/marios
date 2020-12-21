@@ -103,7 +103,6 @@ class UI {
                 <div class="col-lg-5 col-md-12 col-sm-8" id="search-container"></div>
             </div>
         </div>
-        <div class="divider mb-3"></div>
         <div class="row contenedor">
             <div class="col-md-2 mb-3 card mr-3 bor" id="vertical-nav"></div>
             <div class="col-md-10 row pr-0" id="cards-container"></div>
