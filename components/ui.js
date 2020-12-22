@@ -1,8 +1,7 @@
-
 import { formatoMexico, trunc } from '../modules/helpers.js'
 
 class UI {
-  genderCards(genders, section) {
+  genderCards(section, genders) {
     section.style.display = ''
     for (let i = 0; i < genders.length; i++) {
       const gender = genders[i]
@@ -12,7 +11,35 @@ class UI {
       div.innerHTML = `${gender}`
       section.appendChild(div)
     };
+  }
 
+  search() {
+    let searchId = document.getElementById('nav-form')
+    searchId.innerHTML = `
+      <input id="filter" class="form-control" type="text" placeholder="Search Products">
+    `
+    let filterInput = document.getElementById('filter');
+    filterInput.addEventListener('keyup', this.filterProducts);
+  }
+
+  // Filtra los productos //
+  filterProducts() {
+    let filterValue = document.getElementById('filter').value.toUpperCase().trim();
+
+    let cardsContainer = document.getElementById('cards-container');
+    if (cardsContainer === null) {
+      console.log('implementa seccion hombre / mujer')
+    } else {
+      let cards = cardsContainer.querySelectorAll('.card');
+      for (let i = 0; i < cards.length; i++) {
+        let cardValue = cards[i].children[1].children[0].innerHTML;
+        if (cardValue.toUpperCase().indexOf(filterValue) > -1) {
+          cards[i].style.display = '';
+        } else {
+          cards[i].style.display = 'none';
+        }
+      }
+    }
   }
 
   displayNone(section) {
@@ -34,6 +61,7 @@ class UI {
   changeStyle(section, clase) {
     section.classList.add(clase)
   }
+
 
   breadcrumb(arr) {
     const className = 'breadcrumb'
@@ -57,14 +85,8 @@ class UI {
     breadcrumbId.appendChild(ol)
   }
 
-  search() {
-    let searchId = document.getElementById('nav-form')
-    searchId.innerHTML = `
-      <input type="text" class="form-control" id="filter" placeholder="Search Products">
-    `
-    let filterInput = document.getElementById('filter');
-    filterInput.addEventListener('keyup', this.filterProducts);
-  }
+
+
 
   listCards(products) {
 
@@ -90,23 +112,6 @@ class UI {
     }
   }
 
-  // Filtra los productos //
-  filterProducts() {
-    let filterValue = document.getElementById('filter').value.toUpperCase().trim();
-
-    let cardsContainer = document.getElementById('cards-container');
-    let cards = cardsContainer.querySelectorAll('div.col-sm-6');
-
-    for (let i = 0; i < cards.length; i++) {
-      let p = cards[i].getElementsByTagName('span')[0];
-      if (p.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
-        cards[i].style.display = '';
-      } else {
-        cards[i].style.display = 'none';
-      }
-    }
-  }
-
   // agrega contenedor de cartas
   addShopContainer(contenedor) {
     contenedor.innerHTML = `
@@ -117,11 +122,11 @@ class UI {
 
   addVerticalContainer({ container, titleId, productsId, gender }) {
     container.innerHTML = `
-        <div class="mb-1 mt-1">
+        <div class="my-3">
             <p class="font-weight-light" id="VN-title-inicio"><a href="#"><span><</span> INICIO</a></p>
         </div>
-        <div class="mb-3 caja">
-            <h5 class="mb-2" id="${titleId}">${gender}</h5>
+        <div class="caja">
+            <h5 class="mb-2" id="${titleId}">${gender.toUpperCase()}</h5>
             <ul class="list-group" id="${productsId}"></ul>
         </div>
      `

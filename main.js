@@ -1,4 +1,3 @@
-
 import ProductService from './services/productService.js'
 import UI from './components/ui.js'
 import VerticalNav from './components/verticalbar.js'
@@ -9,18 +8,18 @@ const vb = new VerticalNav()
 const ui = new UI()
 const breadcrumb = new Breadcrumb()
 
-
 const section = document.getElementById('main-section')
 const genderSection = document.getElementById('gender-section')
 const shopSection = document.getElementById('shop-section')
+
 let allProducts = ps.getActiveProducts()
+const genders = ps.getALLGenders(allProducts)
+
+
 let productsGender = 'hola mundo';
 
-const generos = ps.getALLGenders(allProducts)
 
-
-
-// listen Items
+// listen Items //
 window.addEventListener("load", bodyLoaded)
 // Seccion //
 section.addEventListener('click', genderClicked)
@@ -28,11 +27,14 @@ section.addEventListener('click', genderClicked)
 breadcrumb.add('inicio')
 
 
-// La pagina inicial cargada //
 function bodyLoaded() {
-  ui.genderCards(generos, genderSection)
+  ui.genderCards(genderSection, genders)
   ui.search()
 }
+
+
+
+
 
 // Click a genero //
 function genderClicked(e) {
@@ -61,6 +63,13 @@ function genderClicked(e) {
     addMoreListener(propsVerticalNav)
   }
 }
+
+
+
+
+
+
+
 
 
 function addMoreListener(props) {
@@ -147,20 +156,22 @@ function returnChangeUl(e) {
 
   vb.changeVerticalNavContent(props)
 
-  updateBreadcrumb('remove', ele)
+  updateBreadcrumb('remove')
 
 
   let productsGender = ps.getProductsByGender(ele[1])
   ui.listCards(productsGender)
 }
+
+
 // Cards del tipo de prenda //
 function clotheTitle(e) {
-  debugger
   var els = document.querySelectorAll('.list-group-item.li.active')
   els.forEach(e => {
     e.classList.remove('active')
-    breadcrumbArr.pop()
-    ui.breadcrumb(breadcrumbArr)
+    // breadcrumbArr.pop()
+    // ui.breadcrumb(breadcrumbArr)
+    updateBreadcrumb('remove')
   });
 
   let valueTxt = e.target.id
@@ -172,6 +183,7 @@ function clotheTitle(e) {
   ui.cards(product)
   document.getElementById('filter').value = ''
 }
+
 
 // funcion darle click a li cambia cards container //
 function productTypeSelected(e) {
@@ -197,11 +209,10 @@ function productTypeSelected(e) {
   ui.listCards(product)
 }
 
-function updateBreadcrumb(action, value) {
+function updateBreadcrumb(action, value = '') {
   if (action === 'add') {
     breadcrumb.add(value)
   } else {
-
     breadcrumb.pop()
   }
   ui.breadcrumb(breadcrumb.elements)

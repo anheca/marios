@@ -13,8 +13,7 @@ const formatoMexico = (number) => {
   return arr[1] ? arr.join('.') : arr[0];
 }
 
-
-function trunc (x, posiciones = 0) {
+function trunc(x, posiciones = 0) {
   var s = x.toString()
   var l = s.length
   var decimalLength = s.indexOf('.') + 1
@@ -38,7 +37,7 @@ function trunc (x, posiciones = 0) {
 }
 
 
-function capitalize (word) {
+function capitalize(word) {
   return word.charAt(0).toUpperCase() + word.slice(1)
 }
 

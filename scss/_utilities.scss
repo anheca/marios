@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 p{
@@ -70,61 +70,61 @@ input:-webkit-autofill:active {
   border: none;
 }
 
-// Margin & padding classes
-$spaceamounts: (5,4,3,2,1);
+// Margin & padding classes //
+$spacer: 1rem !default;
+$spacers: () !default;
+$spacers: map-merge(
+  (
+    0: 0,
+    1: ($spacer * .25),
+    2: ($spacer * .5),
+    3: $spacer,
+    4: ($spacer * 1.5),
+    5: ($spacer * 3)
+  ),
+  $spacers
+);
 
-@each $space in $spaceamounts {
-  .m-#{$space} {
-    margin: #{$space}rem;
-  }
-  .mt-#{$space} {
-    margin-top: #{$space}rem;
-  }
-  .mb-#{$space} {
-    margin-bottom: #{$space}rem;
-  }
-  .ml-#{$space} {
-    margin-left: #{$space}rem;
-  }
-  .mr-#{$space} {
-    margin-right: #{$space}rem;
-  }
-  .my-#{$space} {
-    margin: #{$space}rem 0;
-  }
-  .mx-#{$space} {
-    margin: 0 #{$space}rem;
-  }
-  .p-#{$space} {
-    padding: #{$space}rem;
-  }
-  .pt-#{$space} {
-    padding-top: #{$space}rem;
-  }
-  .pb-#{$space} {
-    padding-bottom: #{$space}rem;
-  }
-  .pl-#{$space} {
-    padding-left: #{$space}rem;
-  }
-  .pr-#{$space} {
-    padding-right: #{$space}rem;
-  }
-  .py-#{$space} {
-    padding: #{$space}rem 0;
-  }
-  .px-#{$space} {
-    padding: 0 #{$space}rem;
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @each $size, $length in $spacers {
+    .#{$abbrev}-#{$size} { #{$prop}: $length !important; }
+    .#{$abbrev}t-#{$size},
+    .#{$abbrev}y-#{$size} {
+      #{$prop}-top: $length !important;
+    }
+    .#{$abbrev}r-#{$size},
+    .#{$abbrev}x-#{$size} {
+      #{$prop}-right: $length !important;
+    }
+    .#{$abbrev}b-#{$size},
+    .#{$abbrev}y-#{$size} {
+      #{$prop}-bottom: $length !important;
+    }
+    .#{$abbrev}l-#{$size},
+    .#{$abbrev}x-#{$size} {
+      #{$prop}-left: $length !important;
+    }
   }
 }
 
-$spaceamounts: (0);
-
-@each $space in $spaceamounts {
-  .m-#{$space} {
-    margin: #{$space};
-  }
-  .p-#{$space} {
-    padding: #{$space};
+@each $size, $length in $spacers {
+  @if $size != 0 {
+    .m-n#{$size} { margin: -$length !important; }
+    .mt-n#{$size},
+    .my-n#{$size} {
+      margin-top: -$length !important;
+    }
+    .mr-n#{$size},
+    .mx-n#{$size} {
+      margin-right: -$length !important;
+    }
+    .mb-n#{$size},
+    .my-n#{$size} {
+      margin-bottom: -$length !important;
+    }
+    .ml-n#{$size},
+    .mx-n#{$size} {
+      margin-left: -$length !important;
+    }
   }
 }

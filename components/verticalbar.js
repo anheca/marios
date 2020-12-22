@@ -4,8 +4,6 @@ const ps = new ProductService()
 
 
 class VerticalNav {
-
-
   verticalNav($verticalNav, valueTxt = 'Error', products) {
     valueTxt = valueTxt.split('-')
     let txt = valueTxt[0].toLocaleUpperCase()
