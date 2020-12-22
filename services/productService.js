@@ -1,11 +1,12 @@
 class ProductService {
-  constructor () {
+  constructor() {
     this.products = this.getProducts()
   }
 
-  getProducts () {
+  getProducts() {
     this.products = [
       { id: 1, name: 'BERMUDA JOGGING ZIMITHFALOV', price: 1919, status: 1, imageURL: 'https://d26lpennugtm8s.cloudfront.net/stores/001/245/791/products/82a73042-aaa9-4aaf-b3e6-188d0a6f012c-234f04fb0da46536dd16029597594634-320-0.jpg', type: 'JOGGINGS', clothe: 'bermudas', gender: "hombre" },
+      { id: 1, name: 'BERMUDA JOGGING ZIMITHFALOV', price: 1919, status: 1, imageURL: 'jj ', type: 'JOGGINGS', clothe: 'bermudas', gender: "hombre" },
       { id: 1, name: 'BERMUDA JOGGING ZIMITHFALOV', price: 1919, status: 1, imageURL: 'https://d26lpennugtm8s.cloudfront.net/stores/001/245/791/products/82a73042-aaa9-4aaf-b3e6-188d0a6f012c-234f04fb0da46536dd16029597594634-320-0.jpg', type: 'kaki', clothe: 'pantalones', gender: "hombre" },
       { id: 2, name: 'BERMUDA JEAN ZIMITHFALOV', price: 2371.54, status: 1, imageURL: 'https://d26lpennugtm8s.cloudfront.net/stores/001/245/791/products/5684d42c-c6fc-4cc9-8812-9e01f6e98f69-841121fd75c430a26316008098751700-320-0.jpg', type: 'JEANS', clothe: 'bermudas', gender: "hombre" },
       { id: 3, name: 'BERMUDA JOGGING ZIMITHFALOV', price: 2090, status: 1, imageURL: 'https://d26lpennugtm8s.cloudfront.net/stores/001/245/791/products/b754c9b6-0a5b-42b5-bf5b-040f4e22627a-b9e93f7b44e9aa11ef16007936419611-320-0.jpg', type: 'JOGGINGS', clothe: 'bermudas', gender: "hombre" },
@@ -26,59 +27,59 @@ class ProductService {
     return this.products
   }
 
-  removeProduct (productName) {
+  removeProduct(productName) {
     const productsFil = this.products.filter(p => {
       return p.name.toLowerCase() != productName.toLowerCase()
     })
     return productsFil
   }
 
-  getProductsByName (productName, products = this.products) {
+  getProductsByName(productName, products = this.products) {
     const productsFil = products.filter(p => {
       return p.name.toLowerCase().match(productName.toLowerCase())
     })
     return productsFil
   }
 
-  getProductsByType (productType, products = this.products) {
+  getProductsByType(productType, products = this.products) {
     const productsFil = products.filter(p => {
       return p.type.toLowerCase().match(productType.toLowerCase())
     })
     return productsFil
   }
 
-  getProductsByClothe (productType, products = this.products) {
+  getProductsByClothe(productType, products = this.products) {
     const productsFil = products.filter(p => {
       return p.clothe.toLowerCase().match(productType.toLowerCase())
     })
     return productsFil
   }
 
-  getProductsByGender (gender) {
+  getProductsByGender(gender) {
     const productsActive = this.products.filter(p => {
       return p.gender.toLocaleLowerCase() === gender.toLocaleLowerCase()
     })
     return productsActive
   }
 
-  getActiveProducts () {
+  getActiveProducts() {
     const prductsActive = this.products.filter(p => {
       return p.status === 1
     })
     return prductsActive
   }
 
-  getAllTypes (products) {
+  getAllTypes(products) {
     const allTypes = [...new Set(products.map(p => p.type.toUpperCase()))]
     return allTypes.sort()
   }
 
-  getAllClothes (products) {
+  getAllClothes(products) {
     const allTypes = [...new Set(products.map(p => p.clothe.toUpperCase()))]
     return allTypes.sort()
   }
 
-  getALLGenders (products) {
+  getALLGenders(products) {
     const allGenders = [...new Set(products.map(p => p.gender.toUpperCase()))]
     return allGenders.sort()
   }

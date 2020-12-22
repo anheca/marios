@@ -76,7 +76,11 @@ class UI {
       let div = document.createElement('div')
       div.className = 'card'
       div.innerHTML = `
-        <img src=${product.imageURL} class="card-img-top wh-d" alt="...">
+      <div class="card-img">
+        <img src=${product.imageURL} class="card-img-top" alt="...">
+        <img src="img/shape.png" class="card-shape">
+        <div class="tj-cart" type="button">+<i class="fas fa-shopping-cart"></i></div>
+      </div>
         <div class="card-body">
             <span>${product.name.toLowerCase()}</span>
             <p><strong>${price}</strong></p>
@@ -113,7 +117,7 @@ class UI {
 
   addVerticalContainer({ container, titleId, productsId, gender }) {
     container.innerHTML = `
-        <div class="mb-3 mt-3">
+        <div class="mb-1 mt-1">
             <p class="font-weight-light" id="VN-title-inicio"><a href="#"><span><</span> INICIO</a></p>
         </div>
         <div class="mb-3 caja">

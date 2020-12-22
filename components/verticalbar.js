@@ -13,7 +13,7 @@ class VerticalNav {
     let titleId = `title-${txt.toLocaleLowerCase()}`
     let productsId = `products-${txt.toLocaleLowerCase()}`
     $verticalNav.innerHTML = `
-        <div class="mb-3 mt-3">
+        <div class="mb-1 mt-1">
             <p class="font-weight-light" id="VN-title-inicio"><a href="#"><span><</span> INICIO</a></p>
         </div>
         <div class="mb-3 caja">
@@ -49,7 +49,7 @@ class VerticalNav {
 
   changeVerticalNavContent(props) {
     props.container.innerHTML = `
-    <div class="mb-3 mt-3">
+    <div class="mb-1 mt-1">
         <p class="font-weight-light" id="VN-title"><a href="#"><span><</span> ${props.gender.toLocaleUpperCase()}</a></p>
     </div>
     <div class="mb-3 caja">

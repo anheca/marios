@@ -1,7 +1,8 @@
 :root{
   // colors //
-  --primary-color: #eb5353;
-  --grey-color: #333333;
+  --primary-color:    #eb5353;
+  --grey-color:       #333333;
+  --lightgrey-color:  #f7f7f7e6;
 
   // medidas //
   --navbar-medida: 3.7rem;
@@ -10,6 +11,7 @@
   // box-shadow //
   --default-shadow: 0 3px 6px rgba(0,0,0,0.2);
   --btn-shadow:     0 3px 4px rgba(0,0,0,0.6);
+  --card-shadow:    0 4px 9px 4px rgba(211, 211, 211, 0.8);
 }
 
 // .is-light-mode{

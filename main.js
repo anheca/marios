@@ -44,6 +44,7 @@ function genderClicked(e) {
     ui.displayNone(shopSection)
     ui.changeStyle(shopSection, 'mx-5')
     ui.changeRoot('--section-medida', 'auto')
+    ui.changeRoot('--navbar-medida', '5rem')
     updateBreadcrumb('add', gender)
     ui.addShopContainer(shopSection)
 
